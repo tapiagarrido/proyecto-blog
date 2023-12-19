@@ -10,6 +10,7 @@ import { LoginResponse } from './interfaces/login-response';
 import { JwtConfig } from './interfaces/jwt-config';
 import { LoginDto } from './dto/login-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Permissions } from './interfaces/permissions';
 
 @Injectable()
 export class AuthService {
@@ -79,8 +80,9 @@ export class AuthService {
   }
 
   async getUser(id: string): Promise<User>{
+    
       const isValidId = mongoose.isValidObjectId(id);
-      console.log(isValidId)
+
       if(!isValidId){
         throw new BadRequestException("El ID ingresado no es valido");
       }
@@ -95,11 +97,14 @@ export class AuthService {
       }
   }
 
-  async updateUser(id:string, updateUserDto: UpdateUserDto): Promise<User>{
+  async updateUser(id:string, updateUserDto: UpdateUserDto, req): Promise<User>{
     const isValidId = mongoose.isValidObjectId(id);
     if(!isValidId){
       throw new BadRequestException("El ID ingresado no es valido");
     }
+    const {_id: currentUserId, role } = req.user;
+    console.log(req.user)
+    if(currentUserId.toString() !== id && role !== Permissions.ADMINISTRATOR) throw new UnauthorizedException("No tienes acceso a editar otros usuarios");
     try {
       const userUpdate = await this.userModel.findByIdAndUpdate(id, updateUserDto, {new:true});
       return userUpdate;

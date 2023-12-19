@@ -16,11 +16,12 @@ import { ConfigModule } from '@nestjs/config';
       global: true,
       secret: process.env.JWT_PASSWORD,
       signOptions: {
-        expiresIn: '6h'
+        expiresIn: '7d'
       }
     })
   ],
   controllers: [AuthController],
   providers: [AuthService],
+  exports:[JwtModule,AuthService]
 })
 export class AuthModule {}

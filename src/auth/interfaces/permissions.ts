@@ -1,4 +1,6 @@
-export interface Permissions{
-    admin?: boolean,
-    author?:boolean
+export enum Permissions{
+    BASIC='basic',
+    AUTHOR='author',
+    MODERATOR='moderator',
+    ADMINISTRATOR='administrator',
 }

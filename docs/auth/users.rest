@@ -17,12 +17,12 @@ POST {{server}}/register
 Content-Type: application/json
 
 {
-    "name":"Gustavo",
+    "name":"Roberto",
     "surname":"Tapia",
     "phone":"949606615",
-    "email":"gustavogddddarrido.programador@gmail.com",
+    "email":"gustavogddddarrido.programador2@gmail.com",
     "password":"mariel1988",
-    "isAdmin": true
+    "role": "administrator"
 }
 
 ### Logearse con Usuario
@@ -30,13 +30,14 @@ POST {{server}}/login
 Content-Type: application/json
 
 {
-    "email":"gustavogarrido5@gmail.com",
+    "email":"gustavogddddarrido.programador2@gmail.com",
     "password":"mariel1988"
 }
 
 ### Obtener todos los usuarios
 GET {{server}}/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2EyNGIwZjUwMTBkMWU5YmJjODkzMSIsImlhdCI6MTcwMjgyMjEwOSwiZXhwIjoxNzAyODQzNzA5fQ.kRaQp8pR2UgC2tOmu6-nQTZhOETlwsVsm92HgcTe-48
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODA2NDhlZDA3MjcyNmZkYTc3ZWYwYSIsImlhdCI6MTcwMjkxMzIwNiwiZXhwIjoxNzAyOTM0ODA2fQ.LJf0zJDpAkEaDq1k16L4X5rnrNjXq9Y7CKcwITvAJws
 
 ### Obtener un usuario especifico
 GET {{server}}/6579260521cba9dec12f45e4
@@ -45,9 +46,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NzkxMjZjZ
 ### Actualizar Usuario por id
 PUT {{server}}/6579126cf6d8d976d3366935
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODA2NDhlZDA3MjcyNmZkYTc3ZWYwYSIsImlhdCI6MTcwMjkyMjIxMywiZXhwIjoxNzAyOTQzODEzfQ.q_NMUDcgGNdp6bHXkLWCSGKSQQwnNY7GR2zNDFSgKVM
 
 {
-    "isAdmin": false
+    "role": "basic"
 }
 
 ### Borrar un usuaeio por id
