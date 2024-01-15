@@ -1,5 +1,10 @@
 @server= http://localhost:3000/users
 
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWNhMDUxOTlhNGRlOTEzMGQ1M2EzOCIsImlhdCI6MTcwNTMzMjQxOCwiZXhwIjoxNzA1OTM3MjE4fQ.VXUv6axY6xij2yocwtj0gKBlxG0zkl1Dj3FnhDDhfVI
+
+#@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTQ1NDlkYmY5YTNlMzlkMGQwNzhmNSIsImlhdCI6MTcwNTI3MDQxNiwiZXhwIjoxNzA1ODc1MjE2fQ.dzfQcmw7qfHLQen5IF-JhazKybRVjMKa0rOvI1ODs28
+
 ### Crear Usuarios directamente
 POST {{server}}/
 Content-Type: application/json
@@ -17,12 +22,12 @@ POST {{server}}/register
 Content-Type: application/json
 
 {
-    "name":"Roberto",
-    "surname":"Tapia",
-    "phone":"949606615",
-    "email":"gustavogddddarrido.programador2@gmail.com",
+    "name":"Alguien",
+    "surname":"Garrido",
+    "phone":"965897878",
+    "email":"alguien.garrido@gmail.com",
     "password":"mariel1988",
-    "role": "administrator"
+    "role": "basic"
 }
 
 ### Logearse con Usuario
@@ -30,27 +35,26 @@ POST {{server}}/login
 Content-Type: application/json
 
 {
-    "email":"gustavogddddarrido.programador2@gmail.com",
+    "email":"gustavogarrido.programador@gmail.com",
     "password":"mariel1988"
 }
 
 ### Obtener todos los usuarios
 GET {{server}}/
-
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODA2NDhlZDA3MjcyNmZkYTc3ZWYwYSIsImlhdCI6MTcwMjkxMzIwNiwiZXhwIjoxNzAyOTM0ODA2fQ.LJf0zJDpAkEaDq1k16L4X5rnrNjXq9Y7CKcwITvAJws
+Authorization: Bearer {{token}}
 
 ### Obtener un usuario especifico
-GET {{server}}/6579260521cba9dec12f45e4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NzkxMjZjZjZkOGQ5NzZkMzM2NjkzNSIsImlhdCI6MTcwMjgzMDg0OCwiZXhwIjoxNzAyODUyNDQ4fQ.RfD97W7sQL94cjK1BFNINQl2G7WoE0qIdfZj0AZs5L4
+GET {{server}}/659caa4b99a4de9130d53a3b
+Authorization: Bearer {{token}}
 
 ### Actualizar Usuario por id
 PUT {{server}}/6579126cf6d8d976d3366935
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODA2NDhlZDA3MjcyNmZkYTc3ZWYwYSIsImlhdCI6MTcwMjkyMjIxMywiZXhwIjoxNzAyOTQzODEzfQ.q_NMUDcgGNdp6bHXkLWCSGKSQQwnNY7GR2zNDFSgKVM
+Authorization: Bearer {{token}}
 
 {
     "role": "basic"
 }
 
 ### Borrar un usuaeio por id
-DELETE {{server}}/657a82b843de89b34e76f07b
+DELETE {{server}}/65a45b600a974ded8d6a4352

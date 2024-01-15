@@ -17,5 +17,5 @@ export class UpdatePostDto extends PartialType(CreatePostDto) {
     category: string;
 
     @IsNotEmpty()
-    user: User;
+    author: User;
 }

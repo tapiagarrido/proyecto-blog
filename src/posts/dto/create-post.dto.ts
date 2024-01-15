@@ -15,6 +15,6 @@ export class CreatePostDto {
     category: string;
 
     @IsNotEmpty()
-    user: User;
+    author: User;
     
 }

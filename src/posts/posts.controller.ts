@@ -1,44 +1,60 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Query, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Query, Put, NotFoundException } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
-import { Permissions } from 'src/auth/interfaces/permissions';
 import { Request } from 'express';
 import { UserRequest } from 'src/auth/interfaces/user-request';
+import { filterPosts } from './interfaces/search.interfaces';
 
+@Auth()
 @Controller('posts')
 export class PostsController {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(private readonly postsService: PostsService) { }
 
   @Post()
-  @Auth()
   create(@Body() createPostDto: CreatePostDto, @Req() req) {
-    createPostDto.user = req.user._id;
+    createPostDto.author = req.user._id;
     return this.postsService.create(createPostDto);
   }
 
   @Get()
-  @Auth()
-  getPosts(@Query("skip") skip:number,@Query("limit") limit:number) {
-    return this.postsService.getPosts(skip,limit);
+  getPosts(@Query("skip") skip: number, @Query("limit") limit: number) {
+    return this.postsService.getPosts(skip, limit);
+  }
+
+  @Get('search')
+  getPostBySearch(@Query("skip") skip: number, @Query("limit") limit: number, @Query("search") search: string) {
+    return this.postsService.getPostsBySearch(skip, limit, search)
+  }
+
+  @Get('filter')
+  getPostByFilter(@Query("skip") skip: number, @Query("limit") limit: number, @Query("author") author: string, @Query("category") category: string) {
+    if (author === undefined && category === undefined) throw new NotFoundException("Necesita especificar el parametro de busqueda");
+    let searchFilter: filterPosts = {}
+    if (author) searchFilter.author = author;
+    if (category) searchFilter.category = category;
+
+    return this.postsService.getPostsByFilter(skip, limit, searchFilter)
   }
 
   @Get(':id')
-  @Auth()
   getPost(@Param('id') id: string) {
     return this.postsService.getPost(id);
   }
 
+  @Get("/user/:userId")
+  getPostsById(@Param("userId") userId: string) {
+    return this.postsService.getPostsById(userId)
+  }
+
   @Put(':id')
-  @Auth()
-  updatePost(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto, @Req() req:Request) {
+  updatePost(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto, @Req() req: Request) {
     return this.postsService.updatePost(id, updatePostDto, req);
   }
 
   @Delete(':id')
-  @Auth()
-  remove(@Param('id') id: string, @Req() req:UserRequest) {
+  remove(@Param('id') id: string, @Req() req: UserRequest) {
     return this.postsService.remove(id, req);
   }
 }
