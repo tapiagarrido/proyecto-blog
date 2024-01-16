@@ -6,7 +6,10 @@ import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Request } from 'express';
 import { UserRequest } from 'src/auth/interfaces/user-request';
 import { filterPosts } from './interfaces/search.interfaces';
+import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Posts")
+@ApiBearerAuth()
 @Auth()
 @Controller('posts')
 export class PostsController {
@@ -38,23 +41,35 @@ export class PostsController {
     return this.postsService.getPostsByFilter(skip, limit, searchFilter)
   }
 
-  @Get(':id')
-  getPost(@Param('id') id: string) {
-    return this.postsService.getPost(id);
+  @ApiParam({
+    name: "postId"
+  })
+  @Get(':postId')
+  getPost(@Param('postId') postId: string) {
+    return this.postsService.getPost(postId);
   }
 
+  @ApiParam({
+    name: "userId"
+  })
   @Get("/user/:userId")
   getPostsById(@Param("userId") userId: string) {
     return this.postsService.getPostsById(userId)
   }
 
-  @Put(':id')
-  updatePost(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto, @Req() req: Request) {
-    return this.postsService.updatePost(id, updatePostDto, req);
+  @ApiParam({
+    name: "postId"
+  })
+  @Put(':postId')
+  updatePost(@Param('postId') postId: string, @Body() updatePostDto: UpdatePostDto, @Req() req: Request) {
+    return this.postsService.updatePost(postId, updatePostDto, req);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string, @Req() req: UserRequest) {
-    return this.postsService.remove(id, req);
+  @ApiParam({
+    name: "postId"
+  })
+  @Delete(':postId')
+  remove(@Param('postId') postId: string, @Req() req: UserRequest) {
+    return this.postsService.remove(postId, req);
   }
 }

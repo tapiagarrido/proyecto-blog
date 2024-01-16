@@ -3,7 +3,10 @@ import { Auth } from 'src/auth/decorators/auth.decorator';
 import { AuthService } from 'src/auth/auth.service';
 import { PostsService } from 'src/posts/posts.service';
 import { Permissions } from 'src/auth/interfaces/permissions';
+import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Admins")
+@ApiBearerAuth()
 @Auth(Permissions.ADMINISTRATOR)
 @Controller('admins')
 export class AdminsController {
@@ -21,8 +24,11 @@ export class AdminsController {
     return this.postsService.getPosts();
   }
 
-  @Delete('users/:id')
-  remove(@Param('id') id: string) {
-    return this.usersService.deleteUser(id)
+  @ApiParam({
+    name: "userId"
+  })
+  @Delete('users/:userId')
+  remove(@Param('userId') userId: string) {
+    return this.usersService.deleteUser(userId)
   }
 }

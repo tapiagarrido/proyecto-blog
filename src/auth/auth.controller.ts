@@ -8,7 +8,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { Auth } from './decorators/auth.decorator';
 import { Permissions } from './interfaces/permissions';
 import { Request } from 'express';
+import { ApiBearerAuth, ApiHeader, ApiParam, ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Users")
+@ApiBearerAuth()
 @Controller('users')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -34,18 +37,27 @@ export class AuthController {
     return this.authService.getUsers();
   }
 
+  @ApiParam({
+    name: "id"
+  })
   @Get("/:id")
   @Auth()
   findUser(@Param("id") id:string, ){
     return this.authService.getUser(id)
   }
 
+  @ApiParam({
+    name: "id"
+  })
   @Put("/:id")
   @Auth()
   updateUser(@Param("id") id:string, @Body() updateUserDto: UpdateUserDto, @Req() req:Request){
     return this.authService.updateUser(id, updateUserDto, req);
   }
 
+  @ApiParam({
+    name: "id"
+  })
   @Delete("/:id")
   @Auth(Permissions.ADMINISTRATOR)
   deleteUser(@Param("id") id:string){
