@@ -1,0 +1,20 @@
+@server= http://localhost:3000/admins
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWNhMDUxOTlhNGRlOTEzMGQ1M2EzOCIsImlhdCI6MTcwNTMzMjQxOCwiZXhwIjoxNzA1OTM3MjE4fQ.VXUv6axY6xij2yocwtj0gKBlxG0zkl1Dj3FnhDDhfVI
+
+
+#@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTQ1NDlkYmY5YTNlMzlkMGQwNzhmNSIsImlhdCI6MTcwNTI3MDQxNiwiZXhwIjoxNzA1ODc1MjE2fQ.dzfQcmw7qfHLQen5IF-JhazKybRVjMKa0rOvI1ODs28
+
+
+### obtener todos los administradores siendo adminsitrador
+GET {{server}}/users
+Authorization: Bearer {{token}}
+
+### obtener todos los posts siendo admin
+GET {{server}}/posts
+Authorization: Bearer {{token}}
+
+
+### Eliminar a un usuario por id siendo admin
+DELETE  {{server}}/users/65a582daac488239044e83bc
+Authorization: Bearer {{token}}

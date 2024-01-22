@@ -10,7 +10,7 @@ enum UserRole {
 @Schema({
     timestamps:true,
 })
-export class User extends Document{
+export class User{
 
     @Prop()
     name: string;
