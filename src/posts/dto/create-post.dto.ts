@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { User } from "src/auth/schemas/user.schema";
+import { User } from "../../auth/schemas/user.schema";
 
 export class CreatePostDto {
 

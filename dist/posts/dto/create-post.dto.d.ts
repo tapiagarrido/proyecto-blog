@@ -1,4 +1,4 @@
-import { User } from "src/auth/schemas/user.schema";
+import { User } from "../../auth/schemas/user.schema";
 export declare class CreatePostDto {
     title: string;
     content: string;

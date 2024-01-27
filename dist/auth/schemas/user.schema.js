@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
 var UserRole;
 (function (UserRole) {
     UserRole["BASIC"] = "basic";
     UserRole["MODERATOR"] = "moderator";
     UserRole["ADMINISTRATOR"] = "administrator";
 })(UserRole || (UserRole = {}));
-let User = class User {
+let User = class User extends mongoose_2.Document {
 };
 exports.User = User;
 __decorate([

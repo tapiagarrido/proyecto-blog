@@ -65,7 +65,7 @@ let AuthService = class AuthService {
     }
     async getUsers() {
         try {
-            const userList = this.userModel.find({}, "-password -createdAt -updatedAt -__v -_id");
+            const userList = await this.userModel.find({}, "-password -createdAt -updatedAt -__v -_id");
             return userList;
         }
         catch (error) {

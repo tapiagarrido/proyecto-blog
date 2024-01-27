@@ -72,7 +72,7 @@ export class AuthService {
 
   async getUsers(): Promise<User[]>{
     try {
-      const userList = this.userModel.find({},"-password -createdAt -updatedAt -__v -_id");
+      const userList = await this.userModel.find({},"-password -createdAt -updatedAt -__v -_id");
       return userList;
     } catch (error) {
       throw new BadRequestException("No se encuentran resultados");

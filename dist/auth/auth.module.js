@@ -20,7 +20,9 @@ exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot(),
+            config_1.ConfigModule.forRoot({
+                envFilePath: `.env.${process.env.NODE_ENV}`
+            }),
             mongoose_1.MongooseModule.forFeature([{
                     name: user_schema_1.User.name, schema: user_schema_1.UserSchema
                 }]),

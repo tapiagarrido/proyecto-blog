@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { AuthService } from 'src/auth/auth.service';
-import { PostsService } from 'src/posts/posts.service';
-import { Permissions } from 'src/auth/interfaces/permissions';
+import { Auth } from '../auth/decorators/auth.decorator';
+import { AuthService } from '../auth/auth.service';
+import { PostsService } from '../posts/posts.service';
+import { Permissions } from '../auth/interfaces/permissions';
 import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 
 @ApiTags("Admins")

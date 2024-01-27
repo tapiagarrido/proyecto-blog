@@ -1,5 +1,5 @@
-import { AuthService } from 'src/auth/auth.service';
-import { PostsService } from 'src/posts/posts.service';
+import { AuthService } from '../auth/auth.service';
+import { PostsService } from '../posts/posts.service';
 export declare class AdminsController {
     private readonly postsService;
     private readonly usersService;

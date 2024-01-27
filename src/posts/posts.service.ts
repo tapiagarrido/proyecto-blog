@@ -4,8 +4,8 @@ import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './schemas/posts.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model, MongooseQueryOptions, ObjectId } from 'mongoose';
-import { Permissions } from 'src/auth/interfaces/permissions';
-import { UserRequest } from 'src/auth/interfaces/user-request';
+import { Permissions } from '../auth/interfaces/permissions';
+import { UserRequest } from '../auth/interfaces/user-request';
 import { MongoQuery, filterPosts } from './interfaces/search.interfaces';
 
 @Injectable()

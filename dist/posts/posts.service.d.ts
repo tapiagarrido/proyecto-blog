@@ -26,7 +26,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './schemas/posts.schema';
 import { Model } from 'mongoose';
-import { UserRequest } from 'src/auth/interfaces/user-request';
+import { UserRequest } from '../auth/interfaces/user-request';
 import { filterPosts } from './interfaces/search.interfaces';
 export declare class PostsService {
     private postModel;

@@ -23,7 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
-export declare class User {
+export declare class User extends Document {
     name: string;
     surname: string;
     phone: string;

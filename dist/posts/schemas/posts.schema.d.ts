@@ -24,7 +24,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from "mongoose";
 import mongoose from "mongoose";
-import { User } from "src/auth/schemas/user.schema";
+import { User } from "../../auth/schemas/user.schema";
 export declare class Post extends Document {
     title: string;
     content: string;

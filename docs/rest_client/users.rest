@@ -1,7 +1,7 @@
 @server= http://localhost:3000/users
 
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWNhMDUxOTlhNGRlOTEzMGQ1M2EzOCIsImlhdCI6MTcwNTgwMjk0NywiZXhwIjoxNzA2NDA3NzQ3fQ.Va6GZ6oQYPdJQcL-tFo3Wcu6Mw06HyKJF96RCkNnIJE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWNhMDUxOTlhNGRlOTEzMGQ1M2EzOCIsImlhdCI6MTcwNjMyNTI0NSwiZXhwIjoxNzA2OTMwMDQ1fQ.rxoazWqXN-m26z17RMU7_slSpHzd2ly225HVu1eql24
 
 #@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTQ1NDlkYmY5YTNlMzlkMGQwNzhmNSIsImlhdCI6MTcwNTI3MDQxNiwiZXhwIjoxNzA1ODc1MjE2fQ.dzfQcmw7qfHLQen5IF-JhazKybRVjMKa0rOvI1ODs28
 
@@ -35,7 +35,7 @@ POST {{server}}/login
 Content-Type: application/json
 
 {
-    "email":"amanda.garrido@gmail.com",
+    "email":"gustavogarrido.programador@gmail.com",
     "password":"mariel1988"
 }
 
@@ -57,4 +57,5 @@ Authorization: Bearer {{token}}
 }
 
 ### Borrar un usuaeio por id
-DELETE {{server}}/65a45b600a974ded8d6a4352
+DELETE {{server}}/65b46e6da0320a2ea0709904
+Authorization: Bearer {{token}}
