@@ -13,7 +13,7 @@ Para comenzar, clona el repositorio en tu ambiente local utilizando el siguiente
 
 **git clone https://github.com/tapiagarrido/proyecto-blog.git**
 
-Una vez hemos descargado los archivos en su totalidad, nos posicionaremos en la carpeta blog y descargaremos los paquetes npm
+Una vez hemos descargado los archivos en su totalidad, nos posicionaremos en la carpeta proyecto-blog y descargaremos los paquetes npm
 
 **npm i**
 
@@ -55,8 +55,7 @@ Si desea conocer el estado de los endpoints, ejecute
 
 **npm run test:e2e**
 
-esto permitira testear todas las tareas de el modulo de usuario y autenticacion (solo las respuestas deseadas y no los errores)
-
+Esto permitirá probar todas las tareas del módulo de usuario y autenticación (solo se evaluarán las respuestas deseadas y no los errores).
 
 
 
