@@ -24,6 +24,8 @@ let PostsController = class PostsController {
         this.postsService = postsService;
     }
     create(createPostDto, req) {
+        if (!req.user._id)
+            throw new common_1.NotFoundException("Debe existir un usuario logueado");
         createPostDto.author = req.user._id;
         return this.postsService.create(createPostDto);
     }

@@ -1,6 +1,7 @@
 # compiled output
 /node_modules
 /docs
+/db
 .env.*
 # Logs
 logs

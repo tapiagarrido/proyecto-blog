@@ -17,6 +17,7 @@ export class PostsController {
 
   @Post()
   create(@Body() createPostDto: CreatePostDto, @Req() req) {
+    if(!req.user._id) throw new NotFoundException("Debe existir un usuario logueado")
     createPostDto.author = req.user._id;
     return this.postsService.create(createPostDto);
   }
